@@ -1,0 +1,37 @@
+{{ header }}
+<div class="container">
+    <div class="row">
+        <div id="content">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div>{{ text_coinslot_order_id }} - {{ order_id }}</div>
+                    <div>{{ text_coinslot_total }} - {{ order_currency }} {{ order_total }}</div>
+                    <div>{{ text_coinslot_total_cryptocurrency }} - {{ order_crypto_currency }} {{ order_crypto_total }}</div>
+
+                    <div class="row">
+                        {% if crypto_address %}
+                        <div class="col-sm-6">
+                            {{ text_crypto_address }} -
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl='+encodeURIComponent({{ crypto_address }}),'Qr code','top=100,left=200,width=350,height=350,status=yes" />
+                        </div>
+                        {% else %}
+                        <hr />
+                        <div class="col-xs-12">
+                            <div class="alert alert-danger">
+                                {{ error_coinslot_unavailable }}
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <a class="btn btn-success" href="{{ done_url }}">{{ text_button_success }}</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{{ footer }}
